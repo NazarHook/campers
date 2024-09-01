@@ -10,3 +10,22 @@
         border: 1px solid var(--gray-light);
         border-radius: 20px;
 }
+.loadMoreBtn {
+    display: block;
+    margin: 40px auto;
+    padding: 16px 32px;
+    background-color: var(--white);
+    border: 1px solid var(--gray-light);
+    color: var(--main);
+    border-radius: 200px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.005em;
+    transition: border-color var(--transition-delay) var(--transition);
+    }
+
+.loadMoreBtn:hover {
+border-color: var(--button-hover);
+}
