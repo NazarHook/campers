@@ -1,0 +1,67 @@
+.container{
+    padding: 44px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    background-color: var(--inputs);
+    gap: 100px;
+    max-width: 631px;
+}
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+  .details{
+    max-width: 527px;
+  }
+  .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 18px;
+    gap: 8px;
+    border-radius: 100px;
+    background: #F2F4F7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.05em;
+    color: var(--main);
+   
+  }
+  .labelEquipment{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--main);
+    margin-bottom: 48px;
+    position: relative;
+    }
+    .labelEquipment::after{
+        content: '';
+        width: 527px;
+    height: 0px;
+        position: absolute;
+        border: 1px solid #DADDE1;
+        bottom: -24px;
+        left: 0;
+    }
+    .optionRow{
+        display: flex;
+        justify-content: space-between;
+    }
+    .detailsList{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+    }
+    .optionName{
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        text-align: center;
+        color: var(--main);
+    }

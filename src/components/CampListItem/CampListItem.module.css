@@ -1,0 +1,116 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    height: 100%;
+  }
+  
+  .contentSide {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .img {
+    width: 292px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  .mainInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .mainInfoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .price {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--main);
+  }
+  
+  .name {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--main);
+  }
+  
+  .secInfo {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .secInfoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--main);
+  }
+  
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 524px;
+    max-height: 100px; 
+    overflow-y: auto; 
+    margin-top: 24px;
+  }
+  
+  .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 18px;
+    gap: 8px;
+    border-radius: 100px;
+    background-color: var(--badges);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.05em;
+    color: var(--main);
+   
+  }
+  
+  .btn {
+       width: 166px;
+    height: 56px;
+    padding: 16px 40px;
+    border-radius: 200px;
+    background-color: var(--button);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.005em;
+    color: var(--white);
+    transition: background-color var(--transition-delay) var(--transition);
+  }
+  
+  .btn:hover {
+    background-color: var(--button-hover);
+  }
+  .icon{
+    cursor: pointer;
+  }

@@ -1,0 +1,47 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    max-width: 631px;
+}
+.container li{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.mainInfo{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.avatar{
+    width: 60px;
+height: 60px;
+border-radius: 60px;
+background-color: var(--badges);
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 24px;
+font-weight: 600;
+line-height: 32px;
+color: var(--button);
+}
+.name{
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+color: var(--main);
+}
+.comment{
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color: var(--text);
+}
+.stars{
+    display: flex;
+    margin-top: 4px;    
+gap: 4px;    
+}

@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    position: absolute;
+}
+.main{
+    color: var(--main);
+}
+.sec{
+    color: var(--text);
+}
