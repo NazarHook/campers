@@ -51,7 +51,8 @@ export default function CampListItem({
 
     const activeCategories = categories.filter((category) => category.value);
 
-    const handleFavoriteToggle = () => {
+    const handleFavoriteToggle = (e) => {
+        e.preventDefault(); // Prevents the NavLink from triggering when clicking the favorite button
         if (isFavorite) {
             dispatch(removeFavorite({ id }));
         } else {
@@ -60,14 +61,14 @@ export default function CampListItem({
     };
 
     return (
-        <div className={css.container}>
+        <NavLink to={`/catalog/${id}`} className={css.container}>
             <img className={css.img} src={path} alt="photo" />
             <div className={css.contentSide}>
                 <div className={css.mainInfo}>
                     <h2 className={css.name}>{name}</h2>
                     <div className={css.mainInfoWrapper}>
                         <p className={css.price}>€{price}.00</p>
-                        <svg onClick={handleFavoriteToggle} className={css.iconFav}>
+                        <svg onClick={handleFavoriteToggle} width="26" height="24" className={css.iconFav}>
                             <use xlinkHref={`${sprite}${isFavorite ? '#icon-favPressed' : '#icon-fav'}`}></use>
                         </svg>
                     </div>
@@ -99,8 +100,8 @@ export default function CampListItem({
                         </span>
                     ))}
                 </div>
-                <NavLink to={`/catalog/${id}`} className={css.btn}>Show More</NavLink>
+                <span className={css.btn}>Show More</span>
             </div>
-        </div>
+        </NavLink>
     );
 }

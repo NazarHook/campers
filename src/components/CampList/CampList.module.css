@@ -9,6 +9,11 @@
         padding: 16px;
         border: 1px solid var(--gray-light);
         border-radius: 20px;
+        transition: border-color var(--transition-delay) var(--transition);
+}
+.item:hover{
+    border-color: var(--gray);
+    cursor: pointer;
 }
 .loadMoreBtn {
     display: block;
