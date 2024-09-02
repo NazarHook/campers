@@ -6,7 +6,7 @@
     position: relative;
     justify-content: space-between;
     align-items: center;
-    z-index: 999999;
+    z-index: 999;
 }
 @media (min-width: 1280px) {
     .container{
