@@ -56,6 +56,7 @@ export default function FilterForm() {
           style: {
             background: '#363636',
             color: '#fff',
+            zIndex: '9999999999'
           },
           success: {
             duration: 3000,
