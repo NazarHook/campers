@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid';
 import css from './FilterForm.module.css';
 import sprite from '../../assets/sprite.svg';
@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeBody, changeFilter, changeOption } from '../../redux/filters/slice';
 import { selectBodyTypes, selectFilterName, selectOptionFilters } from '../../redux/filters/selectors';
+import toast, { Toaster } from 'react-hot-toast';
+
 const locationId = nanoid();
 const equipmentValues = [
   { name: 'AC', icon: '#icon-wind' },
@@ -21,7 +23,7 @@ const bodyTypeValues = [
 ];
 
 const Schema = Yup.object().shape({
-  location: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!').required('Required'),
+  location: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!'),
   equipment: Yup.object().shape({
     AC: Yup.boolean(),
     Automatic: Yup.boolean(),
@@ -38,81 +40,105 @@ const Schema = Yup.object().shape({
 
 export default function FilterForm() {
   const dispatch = useDispatch();
-  const location = useSelector(selectFilterName)
-  const equipment = useSelector(selectOptionFilters)
-  const body = useSelector(selectBodyTypes)
+  const location = useSelector(selectFilterName);
+  const equipment = useSelector(selectOptionFilters);
+  const body = useSelector(selectBodyTypes);
+
   return (
-    <Formik
-      initialValues={
-        {
+    <>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        toastOptions={{
+          className: '',
+          duration: 5000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+          success: {
+            duration: 3000,
+            theme: {
+              primary: 'red',
+              secondary: 'black',
+            },
+          },
+        }}
+      />
+      <Formik
+        initialValues={{
           location: location,
           equipment: equipment,
-          body: body
-        } 
-      }
-      validationSchema={Schema}
-      onSubmit={(values) => {
-        dispatch(changeFilter(values.location))
-        dispatch(changeOption(values.equipment))
-        dispatch(changeBody(values.body))
-      }}
-    >
-      <Form className={css.form}>
-        <label className={css.locationLabel} htmlFor={locationId}>Location</label>
-        <div className={css.inputWrapper}>
-          <svg className={css.iconMap}>
-            <use xlinkHref={`${sprite}#iconMap`}></use>
-          </svg>
-          <Field
-            className={css.locationInput}
-            type="text"
-            name="location"
-            placeholder='City'
-            id={locationId}
-          />
-        </div>
-        <ErrorMessage className={css.error} name="location" component="span" />
+          body: body,
+        }}
+        validationSchema={Schema}
+        onSubmit={(values, { resetForm }) => {
+          if (values.location.trim() === "") {
+            toast.error('Location is required');
+            return
+          }
+          dispatch(changeFilter(values.location));
+          dispatch(changeOption(values.equipment));
+          dispatch(changeBody(values.body));
+          resetForm();
+        }}
+      >
+        <Form className={css.form}>
+          <label className={css.locationLabel} htmlFor={locationId}>Location</label>
+          <div className={css.inputWrapper}>
+            <svg className={css.iconMap}>
+              <use xlinkHref={`${sprite}#iconMap`}></use>
+            </svg>
+            <Field
+              className={css.locationInput}
+              type="text"
+              name="location"
+              placeholder='City'
+              id={locationId}
+            />
+          </div>
+          <span className={css.spanFilter}>Filters</span>
+          <label className={css.labelEquipment}>Vehicle Equipment</label>
+          <div className={css.checkboxGroup}>
+            {equipmentValues.map((obj) => (
+              <label key={obj.name} className={css.checkboxLabel}>
+                <Field
+                  type="checkbox"
+                  name={`equipment.${obj.name}`}
+                  className={css.checkbox}
+                />
+                <span className={css.customCheckbox}>
+                  <svg width="32" height="32" className={css.iconCatalog}>
+                    <use xlinkHref={`${sprite}${obj.icon}`}></use>
+                  </svg>
+                  {obj.name}
+                </span>
+              </label>
+            ))}
+          </div>
 
-        <span className={css.spanFilter}>Filters</span>
-        <label className={css.labelEquipment}>Vehicle Equipment</label>
-        <div className={css.checkboxGroup}>
-          {equipmentValues.map((obj) => (
-            <label key={obj.name} className={css.checkboxLabel}>
-              <Field
-                type="checkbox"
-                name={`equipment.${obj.name}`}
-                className={css.checkbox}
-              />
-              <span className={css.customCheckbox}>
-                <svg width="32" height="32" className={css.iconCatalog}>
-                  <use xlinkHref={`${sprite}${obj.icon}`}></use>
-                </svg>
-                {obj.name}
-              </span>
-            </label>
-          ))}
-        </div>
-
-        <label className={css.labelEquipment}>Vehicle Body Type</label>
-        <div className={css.checkboxGroup}>
-          {bodyTypeValues.map((obj) => (
-            <label key={obj.name} className={css.checkboxLabel}>
-              <Field
-                type="checkbox"
-                name={`body.${obj.name}`}
-                className={css.checkbox}
-              />
-              <span className={css.customCheckbox}>
-                <svg width="32" height="32" className={css.iconCatalog}>
-                  <use xlinkHref={`${sprite}${obj.icon}`}></use>
-                </svg>
-                {obj.name}
-              </span>
-            </label>
-          ))}
-        </div>
-        <button type="submit" className={css.submitButton}>Submit</button>
-      </Form>
-    </Formik>
+          <label className={css.labelEquipment}>Vehicle Body Type</label>
+          <div className={css.checkboxGroup}>
+            {bodyTypeValues.map((obj) => (
+              <label key={obj.name} className={css.checkboxLabel}>
+                <Field
+                  type="checkbox"
+                  name={`body.${obj.name}`}
+                  className={css.checkbox}
+                />
+                <span className={css.customCheckbox}>
+                  <svg width="32" height="32" className={css.iconCatalog}>
+                    <use xlinkHref={`${sprite}${obj.icon}`}></use>
+                  </svg>
+                  {obj.name}
+                </span>
+              </label>
+            ))}
+          </div>
+          <button type="submit" className={css.submitButton}>Submit</button>
+        </Form>
+      </Formik>
+    </>
   );
 }
