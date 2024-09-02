@@ -67,7 +67,7 @@ export default function CampListItem({
                     <h2 className={css.name}>{name}</h2>
                     <div className={css.mainInfoWrapper}>
                         <p className={css.price}>€{price}.00</p>
-                        <svg onClick={handleFavoriteToggle} width="26" height="24" className={css.iconFav}>
+                        <svg onClick={handleFavoriteToggle} className={css.iconFav}>
                             <use xlinkHref={`${sprite}${isFavorite ? '#icon-favPressed' : '#icon-fav'}`}></use>
                         </svg>
                     </div>
