@@ -78,7 +78,7 @@ export default function CampListItem({
                             <use xlinkHref={`${sprite}#icon-starPressed`}></use>
                         </svg>
                         <p className={css.text}>
-                            {rating} ({reviews.length} Reviews)
+                            {rating}({reviews.length} Reviews)
                         </p>
                     </div>
                     <div className={css.secInfoWrapper}>
