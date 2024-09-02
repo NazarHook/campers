@@ -1,6 +1,14 @@
 .container{
     display: flex;
-    margin-top: 48px;
+    flex-direction: column;
+    margin-top: 24px;
     justify-content: space-between;
-    gap: 64px;
+    gap: 32px;
+}
+@media (min-width: 1280px) {
+    .container{
+        margin-top: 48px;
+        flex-direction: row;
+        gap: 64px;
+    }
 }

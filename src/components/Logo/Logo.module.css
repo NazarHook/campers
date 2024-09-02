@@ -1,14 +1,22 @@
 .container{
     display: flex;
     font-weight: 700;
-    font-size: 20px;
-    line-height: 120%;
+    font-size: 16px;
     letter-spacing: -0.01em;
-    position: absolute;
+    text-decoration: none;
 }
 .main{
     color: var(--main);
 }
 .sec{
     color: var(--text);
+}
+@media (min-width: 1280px) {
+.container{
+    font-weight: 700;
+    font-size: 20px;
+    position: absolute;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+}
 }

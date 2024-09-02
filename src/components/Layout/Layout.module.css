@@ -1,5 +1,11 @@
 .container{
+    position: relative;
     margin: 0 auto;
-padding: 0 64px;
-position: relative;
+    padding: 0 16px;
+}
+@media (min-width: 1440px) {
+    .container{
+    padding: 0 64px;
+    }
+
 }

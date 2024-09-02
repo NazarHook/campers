@@ -1,13 +1,14 @@
-import Header from '../Header/Header'
-import css from './Layout.module.css'
-// eslint-disable-next-line react/prop-types
-export default function Layout({children}) {
+import Header from '../Header/Header';
+import { Outlet } from 'react-router-dom'; 
+import css from './Layout.module.css';
+
+export default function Layout() {
     return (
         <>
-            <Header></Header>
-        <div className={css.container}>
-            {children}
-        </div>
+            <Header />
+            <div className={css.container}>
+                <Outlet /> 
+            </div>
         </>
-    )
+    );
 }

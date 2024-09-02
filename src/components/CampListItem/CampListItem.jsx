@@ -67,7 +67,7 @@ export default function CampListItem({
                     <h2 className={css.name}>{name}</h2>
                     <div className={css.mainInfoWrapper}>
                         <p className={css.price}>€{price}.00</p>
-                        <svg onClick={handleFavoriteToggle} width="26" height="24" className={css.icon}>
+                        <svg onClick={handleFavoriteToggle} width="26" height="24" className={css.iconFav}>
                             <use xlinkHref={`${sprite}${isFavorite ? '#icon-favPressed' : '#icon-fav'}`}></use>
                         </svg>
                     </div>
@@ -88,11 +88,11 @@ export default function CampListItem({
                         <p className={css.text}>{location}</p>
                     </div>
                 </div>
-                <p>{description.split(' ').slice(0, 10).join(' ') + '...'}</p>
+                <p className={css.description}>{description.split(' ').slice(0, 10).join(' ') + '...'}</p>
                 <div className={css.categories}>
                     {activeCategories.map((option) => (
                         <span key={option.name} className={css.option}>
-                            <svg width="32" height="32" className={css.iconCatalog}>
+                            <svg width="32" height="32" className={css.icon}>
                                 <use xlinkHref={`${sprite}${option.icon}`}></use>
                             </svg>
                             {option.name}

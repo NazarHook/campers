@@ -132,7 +132,7 @@ export default function CarInfo() {
              <div className={css.categories}>
             {activeCategories.map((option) => (
                 <span key={option.name} className={css.option}>
-                  <svg width="32" height="32" className={css.iconCatalog}>
+                  <svg width="32" height="32" className={css.icon}>
                     <use xlinkHref={`${sprite}${option.icon}`}></use>
                   </svg>
                   {option.name}

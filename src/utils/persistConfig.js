@@ -1,24 +1,19 @@
-import storage from 'redux-persist/lib/storage';
-
-const favorites = {
-  key: 'favorites',
-  storage,
-  whitelist: ['favorites'],
-};
-const filters = {
-  key: 'filters',
-  storage,
-  whitelist: ['filter'],
-};
-
-const transports = {
-  key: 'transports',
-  storage,
-  whitelist: ['items'],
-};
+import storage from 'redux-persist/lib/storage'; 
 
 export const persistConfig = {
-  favorites,
-  filters,
-  transports
+  favorites: {
+    key: 'favorites',
+    storage,
+    whitelist: ['items'],
+  },
+  filters: {
+    key: 'filters',
+    storage,
+    whitelist: ['location', 'equipment', 'body']
+  },
+  transports: {
+    key: 'transports',
+    storage,
+    whitelist: ['items']
+  },
 };

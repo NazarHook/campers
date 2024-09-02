@@ -1,18 +1,20 @@
+.link {
+  display: inline-flex;
+  padding: 8px;
+  text-decoration: none;
+  color: var(--main);
+  transition: color var(--transition-delay) var(--transition);
+}
+
+.link:hover {
+  color: var(--button-hover);
+}
+
+.active {
+  color: var(--button-hover);
+}
+@media (min-width: 1280px) {
 .container{
     margin: 0 auto;
 }
-.link {
-    display: inline-flex;
-    padding: 8px;
-    text-decoration: none;
-    color: var(--main);
-    transition: color var(--transition-delay) var(--transition);
-  }
-  
-  .link:hover {
-    color: var(--button-hover);
-  }
-  
-  .active {
-    color: var(--button-hover);
-  }
+}

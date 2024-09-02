@@ -52,7 +52,7 @@ export default function CampDetailPage() {
             <svg width="16" height="16" className={css.icon}>
               <use xlinkHref={`${sprite}#icon-starPressed`}></use>
             </svg>
-            <p className={css.text}>
+            <p className={css.priceText}>
               {rating} ({reviews.length} Reviews)
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function CampDetailPage() {
             <svg width="16" height="16" className={css.iconMap}>
               <use xlinkHref={`${sprite}#iconMap`}></use>
             </svg>
-            <p className={css.text}>{location}</p>
+            <p className={css.locationText}>{location}</p>
           </div>
         </div>
         <p className={css.price}>€{price}.00</p>

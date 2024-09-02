@@ -8,13 +8,10 @@ import Loader from '../../components/Loader/Loader.jsx'
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage.jsx'
 import { useSelector } from 'react-redux'
 import { selectLoading } from '../../redux/transports/selectors'
-import { selectFavs } from '../../redux/favorites/selectors.js'
 export default function CatalogPage() {
     const [loader, setLoader] = useState(useSelector(selectLoading))
     const [error, setError] = useState(useSelector(selectLoading))
     const dispatch = useDispatch()
-    const items = useSelector(selectFavs)
-    console.log(items);
 useEffect(() => {
     try {
         setLoader(true)

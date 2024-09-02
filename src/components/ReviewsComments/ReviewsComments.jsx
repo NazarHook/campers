@@ -43,7 +43,7 @@ export default function ReviewsComments() {
                     key={index}
                     width="16"
                     height="16"
-                    className={css.iconCatalog}
+                    className={css.icon}
                   >
                     <use
                       xlinkHref={

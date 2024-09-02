@@ -3,9 +3,9 @@ import { nanoid } from 'nanoid';
 import css from './FilterForm.module.css';
 import sprite from '../../assets/sprite.svg';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeBody, changeFilter, changeOption } from '../../redux/filters/slice';
-
+import { selectBodyTypes, selectFilterName, selectOptionFilters } from '../../redux/filters/selectors';
 const locationId = nanoid();
 const equipmentValues = [
   { name: 'AC', icon: '#icon-wind' },
@@ -38,24 +38,16 @@ const Schema = Yup.object().shape({
 
 export default function FilterForm() {
   const dispatch = useDispatch();
-
+  const location = useSelector(selectFilterName)
+  const equipment = useSelector(selectOptionFilters)
+  const body = useSelector(selectBodyTypes)
   return (
     <Formik
       initialValues={
         {
-          location: '',
-          equipment: {
-              AC: false,
-              Automatic: false,
-              Kitchen: false,
-              TV: false,
-              Bathroom: false,
-            },
-          body: {
-            Van: false,
-            Fully: false,
-            Alcove: false,
-          },
+          location: location,
+          equipment: equipment,
+          body: body
         } 
       }
       validationSchema={Schema}

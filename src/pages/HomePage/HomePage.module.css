@@ -1,17 +1,50 @@
 .container{
-    background-image: url(../../assets/images/HomePage/track.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
+  background-image: url(../../assets/images/HomePage/track.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw; 
+  height: 100vh; 
+  color: var(--inputs);
+  padding: 0 16px;
+}
+.mainHead{
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-bottom: 6px;
+  }
+  .secHead{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 20px;
+    }
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      border-radius: 200px;
+      outline: none;
+      background-color: var(--button);
+      cursor: pointer;
+      transition: background-color var(--transition-delay) var(--transition);
+      color: var(--inputs);
+      width: 84px;
+  height: 30px;
+      font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+    }
+@media (min-width: 1280px) {
+.container{
     padding: 0 64px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    width: 100vw; 
-    height: 100vh; 
-    color: var(--inputs);
 }
 .mainHead{
 font-size: 48px;
@@ -26,21 +59,13 @@ line-height: 32px;
 margin-bottom: 40px;
 }
 .btn {
-    display: block;
     padding: 16px 48px;
-    border: none;
-    border-radius: 200px;
-    outline: none;
-    background-color: var(--button);
-    cursor: pointer;
-    transition: background-color var(--transition-delay) var(--transition);
-    color: var(--inputs);
     width: 173px;
 height: 56px;
     font-size: 16px;
 font-weight: 500;
-text-decoration: none;
   }
   .btn:hover{
     background-color: var(--button-hover);
   }
+}

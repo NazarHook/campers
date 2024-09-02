@@ -5,6 +5,7 @@ import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch } from 'react-redux';
 import { reserveCamp } from '../../redux/transports/operations';
+import { Toaster, toast } from 'react-hot-toast';
 
 const initialValues = {
   name: '',
@@ -23,64 +24,86 @@ const Schema = Yup.object({
 export default function UserForm() {
   const dispatch = useDispatch();
 
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(reserveCamp(values))
+        toast.success('Form submitted successfully!'); 
+        resetForm();
+  };
+
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={Schema}
-      onSubmit={(values, { resetForm }) => {
-        console.log(values);
-        dispatch(reserveCamp(values));
-        resetForm(); 
-      }}
-    >
-      {({ setFieldValue, values }) => (
-        <Form className={css.form}>
-          <div className={css.headInfo}>
-            <h3 className={css.mainText}>Book your campervan now</h3>
-            <p className={css.secText}>Stay connected! We are always ready to help you.</p>
-          </div>
+    <>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        toastOptions={{
+          className: '',
+          duration: 5000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+          success: {
+            duration: 3000,
+            theme: {
+              primary: 'green',
+              secondary: 'black',
+            },
+          },
+        }}
+      />
+      <Formik
+        initialValues={initialValues}
+        validationSchema={Schema}
+        onSubmit={handleSubmit}
+      >
+        {({ setFieldValue, values }) => (
+          <Form className={css.form}>
+            <div className={css.headInfo}>
+              <h3 className={css.mainText}>Book your campervan now</h3>
+              <p className={css.secText}>Stay connected! We are always ready to help you.</p>
+            </div>
 
-          <Field
-            className={css.input}
-            placeholder="Name*"
-            type="text"
-            name="name"
-          />
-          <ErrorMessage name="name" component="div" className={css.error} />
-
-          <Field
-            className={css.input}
-            placeholder="Email*"
-            type="email"
-            name="email"
-          />
-          <ErrorMessage name="email" component="div" className={css.error} />
-
-          <div className={css.datePicker}>
-            <ReactDatePicker
+            <Field
               className={css.input}
-              placeholderText="Booking date*"
-              dateFormat="dd/MM/yyyy"
-              selected={values.date} 
-              onChange={(date) => {
-                setFieldValue('date', date); 
-              }}
+              placeholder="Name*"
+              type="text"
+              name="name"
             />
-            <ErrorMessage name="date" component="div" className={css.error} />
-          </div>
+            <ErrorMessage name="name" component="div" className={css.error} />
 
-          <Field
-            className={css.input}
-            as="textarea"
-            placeholder="Comment"
-            name="comment"
-            rows="5"
-          />
-          <ErrorMessage name="comment" component="div" className={css.error} />
+            <Field
+              className={css.input}
+              placeholder="Email*"
+              type="email"
+              name="email"
+            />
+            <ErrorMessage name="email" component="div" className={css.error} />
 
-          <button className={css.btn} type="submit">Send</button>
-        </Form>
-      )}
-    </Formik>
+            <div className={css.datePicker}>
+              <ReactDatePicker
+                className={css.input}
+                placeholderText="Booking date*"
+                dateFormat="dd/MM/yyyy"
+                selected={values.date}
+                onChange={(date) => setFieldValue('date', date)}
+              />
+              <ErrorMessage name="date" component="div" className={css.error} />
+            </div>
+
+            <Field
+              className={css.input}
+              as="textarea"
+              placeholder="Comment"
+              name="comment"
+              rows="5"
+            />
+            <ErrorMessage name="comment" component="div" className={css.error} />
+
+            <button className={css.btn} type="submit">Send</button>
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 }

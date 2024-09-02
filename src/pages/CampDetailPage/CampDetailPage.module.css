@@ -1,21 +1,117 @@
 .container{
+  margin-top: 32px;
+}
+.mainInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 28px;
+}
+.price {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--main);
+}
+.secInfo {
+  display: flex;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+.name {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+.secInfoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.priceText{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration: underline;
+  color: var(--main);
+}
+.locationText{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--main);
+}
+.gallery{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+.galleryItem img {
+  border-radius: 10px;
+}
+
+.description{
+font-size: 16px;
+font-weight: 400;
+line-height: 20px;
+text-align: left;
+color: var(--text);
+margin-bottom: 30px;
+}
+.navList{
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--gray-light);
+  padding-bottom: 16px;
+}
+.link {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+  color: var(--main);
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  left: 0;
+  position: absolute;
+  bottom: -20px;
+  width: 65px;
+  height: 0;
+  border: 1px solid #E44848;
+ 
+  opacity: 0; 
+  transition: opacity var(--transition-delay) var(--transition);
+}
+
+.link:hover::after,
+.link:focus::after,
+.link:active::after {
+  opacity: 1; 
+}
+@media (min-width: 1280px) {
+.container{
     margin-top: 48px;
 }
 .mainInfo{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
     margin-bottom: 28px;
 }
 .price {
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
-    color: var(--main);
   }
   .secInfo {
-    display: flex;
     margin-bottom: 16px;
     gap: 16px;
   }
@@ -23,27 +119,26 @@
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
-    color: var(--main);
     margin-bottom: 8px;
   }
   .secInfoWrapper {
-    display: flex;
-    align-items: center;
     gap: 4px;
   }
   
-  .text {
+  .priceText{
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    color: var(--main);
+  }
+  .locationText{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
   }
   .gallery{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     gap: 48px;
     margin-bottom: 28px;
+    flex-direction: row;
   }
   .galleryItem img {
     border-radius: 10px;
@@ -53,36 +148,23 @@
 font-size: 16px;
 font-weight: 400;
 line-height: 24px;
-text-align: left;
-color: var(--text);
 margin-bottom: 60px;
   }
   .navList{
-    display: flex;
     gap: 40px;
-    border-bottom: 1px solid var(--gray-light);
     padding-bottom: 24px;
   }
   .link {
-    text-decoration: none;
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
-    cursor: pointer;
-    color: var(--main);
-    position: relative;
   }
   
   .link::after {
-    content: '';
-    left: 0;
-    position: absolute;
     border: 2px solid #E44848;
     bottom: -28px;
     width: 85px;
     height: 0;
-    opacity: 0; 
-    transition: opacity var(--transition-delay) var(--transition);
   }
   
   .link:hover::after,
@@ -90,4 +172,4 @@ margin-bottom: 60px;
   .link:active::after {
     opacity: 1; 
   }
-  
+}
